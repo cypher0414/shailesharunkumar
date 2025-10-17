@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shailesh Arunkumar | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bg-effects.css" />
+  <link rel="stylesheet" href="moon.css" />
+  <link rel="stylesheet" href="cursor-glow.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css">
+  <link rel="stylesheet" href="skills.css" />
+
+
+
+  <style>
+    :root {
+    --bg: #001f3f;
+    --bg-alt: #003366;
+    --text: #e6f7ff;
+    --subtext: #87cefa;
+    --accent: #1e90ff;
+  }
+
+
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .layout {
+      display: flex;
+    }
+
+    /* Sidebar fixed */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 33%;
+      height: 100vh;
+      padding: 60px 20px;
+      background: rgba(0, 20, 50, 0.7);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .sidebar h1 {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+
+    .sidebar h2 {
+      font-size: 1.1rem;
+      color: var(--subtext);
+      margin: 10px 0 40px;
+    }
+
+    nav a {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      margin: 5px auto;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      max-width: 180px; /* Width of the lhs oval*/
+      padding: 8px 12px;
+      border-radius: 30px / 18px;
+      position: relative;
+      text-align: center;
+    }
+
+    nav a.active {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      text-shadow:
+          0 0 5px var(--accent),
+          0 0 10px var(--accent),
+          0 0 20px var(--accent);
+      background-color: rgba(208, 100, 249, 0.2);
+      box-shadow:
+          0 0 10px var(--accent),
+          0 0 20px var(--accent),
+          0 0 30px var(--accent);
+      border-radius: 30px / 15px;
+      transition: all 0.3s ease;
+    }
+
+    .socials {
+      margin-top: 40px;
+    }
+
+    .socials a {
+      margin: 0 10px;
+      color: var(--subtext);
+      font-size: 1.4rem;
+      text-decoration: none;
+    }
+
+    .content {
+      margin-left: 33%;
+      width: calc(75% - 40px);
+      padding: 60px 40px 60px 90px;
+      letter-spacing: 0.5px;
+    }
+
+    .content section {
+      margin-bottom: 40px;
+      padding: 20px 0;
+    }
+
+    .content h3 {
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+      letter-spacing: 15px;
+      text-align: center;
+    }
+
+    /* Box Styling for .job, .project, and .pub (No background by default) */
+    .job, .project, .pub {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: none;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover Effect: Background, Glow, and Box Highlight */
+    .job:hover, .project:hover, .pub:hover {
+      background-color: rgba(0, 120, 255, 0.2);
+      box-shadow: 0 0 10px rgba(0, 120, 255, 0.7);
+
+      transform: scale(1.05);
+    }
+
+    .job strong, .project strong, .pub strong {
+      color: var(--accent);
+    }
+
+    a {
+      color: var(--accent);
+      letter-spacing: 4px;
+    }
+
+    /* Skills bubble styling */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* Style each skill bubble with translucency */
+    .skill-bubble {
+      background-color: rgba(100, 149, 255, 0.55); /* Cornflower Blue, about 55% opacity */
+      color: var(--bg);
+      padding: 10px 20px;
+      border-radius: 20px; /* Rounded bubble */
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    /* Hover effect with glowing and slight scale-up */
+    .skill-bubble:hover {
+      transform: scale(1.1);
+     box-shadow: 0 0 10px rgba(0, 150, 255, 0.7), 0 0 20px rgba(0, 150, 255, 0.7); /* Glowing blue effect */
+     background-color: rgba(0, 150, 255, 0.7); /* Slightly less transparent on hover */
+
+    }
+
+    /* Footer styling */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: var(--subtext);
+      position: relative; /* Change to fixed if you want sticky */
+      bottom: 0;
+      width: 100%;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    #contact i {
+        margin-right: 8px;
+        color: var(--accent);
+    }
+    /*FOnt size for the experience pts*/
+    #experience ul li {
+    /*font-size: 0.9em; /* smaller font size */
+    color: rgba(242, 230, 247, 0.8); /* translucent effect */
+    line-height: 1.5; /* improves readability */
+    }
+    #projects ul li {
+    /*font-size: 0.9em; /* smaller font size */
+    color: rgba(242, 230, 247, 0.8); /* translucent effect */
+    line-height: 1.5; /* improves readability */
+    }
+    #publications .pub {
+    /*font-size: 0.9em; /* smaller font size */
+    color: rgba(242, 230, 247, 0.8); /* translucent effect */
+    line-height: 1.5; /* improves readability */
+    }
+    .sidebar > div {
+  transform: translateY(-50px); /* adjust this value until it feels right */
+    }
+    .about-text {
+  text-align: justify;
+  color: rgba(242, 230, 247, 0.8); /* lighter/translucent text */  
+   } 
+   
+  .certifications-container {
+  display: flex;
+  justify-content: center;  /* centers horizontally */
+  flex-wrap: wrap;          /* wraps to next line if needed */
+  gap: 10px;                /* space between bubbles */
+  }
+
+  
+
+  </style>
+</head>
+<body>
+  <!-- Stars and galaxy -->
+  <div class="galaxy">
+    <div class="stars"></div>
+  </div>
+
+  <!-- Cursor Glow -->  
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <h1>Shailesh Arunkumar</h1>
+        <h2>Tech Enthusiast</h2>
+        <nav id="navbar">
+          <a href="#about">ABOUT</a>
+          <a href="#experience">EXPERIENCE</a>
+          <a href="#skills">SKILLS</a>
+          <a href="#resume">RESUME</a>
+          <a href="#projects">PROJECTS</a>
+          <a href="#publications">PUBLICATIONS</a>
+          <a href="#certifications">CERTIFICATIONS</a>
+          <a href="#contact">CONTACT ME</a>
+        </nav>
+        <div class="socials">
+            <a href="https://github.com/cypher0414"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/shailesharunkumar/"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:shailesharunk@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://scholar.google.com/citations?user=yzi-EBgAAAAJ&hl=en&authuser=2" target="_blank" title="Google Scholar"></a>
+        <i class="ai ai-google-scholar"></i>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="content">
+      <section id="about">
+        <h3>-- ABOUT ME --</h3>
+        <p style="text-align: justify;">
+        Hi! I’m <strong>Shailesh Arunkumar</strong>, a passionate Information Technology professional 
+         with interests in Data Science, AI, and ERP solutions. 
+        I am currently pursuing my Bachelor of Technology in Information Technology from Velammal 
+        Engineering College, Chennai. Along the way, I have gained hands-on experience 
+        as a SAP ABAP Developer and an Integration Developer.
+<br><br>
+        I thrive at the intersection of technology and problem-solving, 
+        building solutions that are not only functional but also efficient and user-friendly. 
+        My expertise spans full-stack web development, machine learning, data analytics, and 
+        enterprise software integration. I enjoy designing intuitive applications, optimizing 
+        business processes, and exploring emerging technologies like blockchain, AI, and cloud computing.
+<br><br>
+        Beyond work, I actively contribute to research and have co-authored publications on AI, 
+        IoT, and digital twins. I’m also deeply involved in campus leadership, having organized 
+        large-scale technical and cultural events, led coding initiatives, and served as a class
+         representative.
+<br><br>
+        When I’m not coding or designing systems, you’ll find me exploring new technologies, 
+        building personal projects, or mentoring peers in programming. I’m driven 
+        by curiosity, innovation, and the desire to create solutions that make a meaningful impact.
+        </p>
+
+      </section>
+
+      <section id="experience">
+        <h3 style="text-align: center;">-- EXPERIENCE --</h3>
+        <div class="job" style="text-align: justify;">
+            <strong style="font-size: 1.3em;">SAP ABAP Developer </strong> — Sakaye Infotech Pvt Ltd (May 2025 - Present)  
+            <ul>
+            <li>Developed custom reports and enhancements using SAP ABAP, including ALV reports, Smart Forms, and BAPIs.</li>
+            <li>Worked on modularization techniques (Function Modules, Includes, Subroutines) to improve code maintainability.</li>
+            <li>Integrated ABAP programs with SAP standard modules (MM, SD, FI) to support end-to-end business processes.</li>
+            <li>Performed unit testing and troubleshooting of ABAP developments to ensure robust and error-free deployments.</li>
+            <li>Assisted in preparing detailed technical specifications and functional design documents to support the development and implementation of customized ERP solutions.</li>
+            </ul>
+        </div>
+        <div class="job" style="text-align: justify;">
+            <strong style="font-size: 1.3em;">Integration Developer</strong> — Sakaye Infotech Pvt Ltd (Nov. 2024 – Jan 2025)  
+            <ul>
+            <li>Built integration flows using MuleSoft (Mule ESB) to connect applications across the enterprise environment.</li>
+            <li>Designed and implemented API-based data exchange, supporting both REST and SOAP services.</li>
+            <li>Created and managed reusable connectors, configurations, and API policies using Anypoint Platform.</li>
+            <li>Utilized DataWeave for efficient data transformation between various formats such as JSON, XML, and CSV.</li>
+            <li>Ensured smooth system communication by applying data mapping, transformation, and error handling techniques.</li>
+            </ul>
+        </div>
+        <div class="job" style="text-align: justify;">
+            <strong style="font-size: 1.3em;">Full Stack Developer Intern</strong> — Codebind Technologies (Jun. 2024 – Oct 2024)  
+            <ul>
+            <li>Developed responsive UI components with HTML, CSS, and JavaScript to enhance user experience across devices.</li>
+            <li>Built a full-stack web application using HTML, CSS, JavaScript, and backend technologies such as Node.js and PHP.</li>
+            <li>Integrated frontend with backend APIs to enable real-time data interaction and dynamic content rendering.</li>
+            <li>Implemented user authentication, session handling, and secure form validation for data-sensitive operations.</li>
+            <li>Followed responsive design principles and cross-browser compatibility standards for a consistent UI.</li>
+            </ul>
+        </div>
+
+        <div class="job" style="text-align: justify;">
+            <strong style="font-size: 1.3em;">Research Assistant</strong> — Velammal Engineering College (Dec. 2023 – Mar. 2024)  
+            <ul>
+              <li>Co-authored academic papers, contributing significantly to literature reviews, data interpretation, and discussion sections.</li>
+              <li>Played a key role in structuring research papers for publication, ensuring clarity, coherence, and alignment with academic standards.</li>
+              <li>Prepared presentation materials (slides, abstracts, posters) for conferences or internal reviews.</li>
+            </ul>
+        </div>
+
+        <div class="job" style="text-align: justify;">
+            <strong style="font-size: 1.3em;">Teaching Assistant - Database Management System (DBMS)</strong> — Velammal Engineering College (2022 – 2023)  
+            <ul>
+              <li>Assisted in teaching core database concepts including SQL, relational models, normalization, and transaction management.</li>
+              <li>Led lab sessions and quizzes, evaluated student work, and encouraged participation to enhance learning and critical thinking.</li>
+              <li>Reviewed and corrected ER diagrams and relational schema designs for accuracy, consistency, and normalization standards.</li>
+            </ul>
+        </div>
+</section>
+
+
+      <section id="skills">
+        <h3>-- SKILLS --</h3>
+        <div class="skills-container">
+          <span class="skill-bubble">C</span>
+          <span class="skill-bubble">C++</span>
+          <span class="skill-bubble">JAVA</span>
+          <span class="skill-bubble">Python</span>
+          <span class="skill-bubble">SQL</span>
+          <span class="skill-bubble">PostgreSQL</span>
+          <span class="skill-bubble">R</span>
+          <span class="skill-bubble">HTML/CSS</span>
+          <span class="skill-bubble">MongoDB</span>
+          <span class="skill-bubble">Mule ESB</span>
+          <span class="skill-bubble">AWS Cloud</span>
+          <span class="skill-bubble">Baan IV</span>
+          <span class="skill-bubble">Infor LN</span>
+          <span class="skill-bubble">SAP ABAP</span>
+          <span class="skill-bubble">JavaScript</span>
+          <span class="skill-bubble">Pandas</span>
+          <span class="skill-bubble">NumPy</span>
+          <span class="skill-bubble">Matplotlib</span>
+          <span class="skill-bubble">Seaborn</span>
+          <span class="skill-bubble">Power BI</span>
+          <span class="skill-bubble">Tableau</span>
+          <span class="skill-bubble">Scikit-learn</span>
+          <span class="skill-bubble">Git</span>
+          <span class="skill-bubble">PyCharm</span>
+          <span class="skill-bubble">VS Code</span>
+          <span class="skill-bubble">MS Excel</span>
+          <span class="skill-bubble">Google Workspace</span>
+          <span class="skill-bubble">Google Sheet</span>
+          <span class="skill-bubble">Microsoft Suite</span>
+        </div>
+      </section>
+
+      <section id="resume">
+        <h3>-- RESUME --</h3>
+        <p>Download my full resume<a href="https://drive.google.com/file/d/1hlv11-gCgELcaIx-bfxpey4Emb-5ySl7/view?usp=sharing" target="_blank">here</a>.</p>
+      </section>
+
+      <section id="projects">
+        <h3>-- PROJECTS --</h3>
+        <div class="project" style="text-align: justify;">
+          <strong style="font-size: 1.3em;">Fashion MNIST Image Classification (Deep Learning)</strong><br/>
+          <ul>
+            <li>Developed and compared multiple CNN architectures for classifying Fashion MNIST images.</li>
+            <li>Baseline CNN achieved 89.7% test accuracy; a smaller CNN achieved 90.2% while using fewer parameters.</li>
+            <li>Evaluated models with confusion matrices, classification reports, and training curves, highlighting performance vs. model complexity.</li>
+          </ul>
+        </div>
+        <div class="project" style="text-align: justify;">
+          <strong style="font-size: 1.3em;">Iris Flower Clustering Using K-Means (Unsupervised Machine Learning)</strong><br/>
+          <ul>
+            <li>Conducted data cleaning, feature scaling, and normalization using pandas and StandardScaler for optimal clustering performance.</li>
+            <li>Determined the optimal number of clusters using the Elbow Method, confirming three natural groupings in the dataset.</li>
+            <li>Implemented PCA (Principal Component Analysis) to reduce dimensionality and visualize clusters in a 2D feature space.</li>
+          </ul>  
+        </div>
+        <div class="project" style="text-align: justify;">
+          <strong style="font-size: 1.3em;">Weather App Using OpenWeatherMap API</strong><br/>
+          <ul>
+            <li>Created a Python command-line application to fetch and display real-time weather data using the OpenWeatherMap API.</li>
+            <li>Parsed and formatted API responses to show temperature, humidity, pressure, and weather descriptions in a user-friendly manner.</li>
+            <li>Handled error cases such as invalid city names or API keys to improve user experience.</li>
+         </ul>  
+        </div>
+        <div class="project" style="text-align: justify;">
+          <strong style="font-size: 1.3em;">Decentralized Payment Web App</strong><br/>
+          <ul>
+            <li>Developed a decentralized payment web app enabling ETH transfers via a Solidity smart contract deployed on the Sepolia Testnet.</li>
+            <li>Built a Node.js backend to store transaction details in a SQLite database and created REST endpoints to retrieve data.</li>
+            <li>Integrated MetaMask wallet with frontend to enable secure ETH payments via smart contracts, ensuring smooth and reliable user transactions on the Ethereum network.</li>
+          </ul>  
+        </div>
+        <div class="project" style="text-align: justify;">
+          <strong style="font-size: 1.3em;">DualMix Notary Web Application</strong><br/>
+          <ul>
+            <li>Developed a secure web app to create and verify notarized digital records using dual-layer hashing (SHA-256 & SHA-512) and optional peppering for enhanced security.</li>
+            <li>Implemented WebAuthn-based authentication with fallback to local keys for flexible user login and registration (login feature pending).</li>
+            <li>Designed a responsive UI with modern styles and enabled users to store, verify, export, and clear notarized records locally using LocalStorage.</li>
+          </ul>  
+        </div>
+      </section>
+
+      <section id="publications">
+        <h3>-- PUBLICATIONS --</h3>
+
+        <div class="pub" style="text-align: justify;">
+            <strong style="font-size: 1.3em;">Artifact Sentinel: A Real-Time IoT System for Artifact Safety and Conservation</strong>
+            <br>
+            Published in Journal of Electrical and Electronics Applications (JEEA), Volume 7, Issue 2, June 2025
+            <p>Proposed an IoT-based monitoring system that uses real-time sensors to track environmental conditions around sensitive artifacts, helping prevent deterioration and ensuring long-term preservation.</p> 
+            <div style="text-align: center;">
+            <a href="https://irojournals.com/iroeea/article/view/7/2/6" target="_blank">SOURCE</a>
+            </div>
+        </div>
+
+        <div class="pub">
+            <strong style="font-size: 1.3em;">Role of Artificial Intelligence in Enhancing School Digital Twins </strong>
+            <br>
+            Published in Journal of Artificial Intelligence and Cognitive Networks (JAICN), Volume 7, Issue 2, June 2025 
+            <p>Explored how AI technologies can be integrated into digital twin models for educational institutions to simulate, analyze, and optimize academic and administrative processes in real time.</p>
+            <div style="text-align: center;">
+            <a href="https://irojournals.com/aicn/article/view/7/2/8" target="_blank">SOURCE</a>
+            </div>
+        </div>
+
+        <div class="pub">
+            <strong style="font-size: 1.3em;">AI-powered Interview Coaching: A Multimodal Full-stack Framework for Behavioral and Technical Assessment </strong>
+            <br>
+            Published in International Research Journal of Modernization in Engineering, Technology and Science (IRJMETS), Volume 7, Issue 8, August 2025            
+            <p>Presented a full-stack AI framework that analyzes user responses using facial cues, speech patterns, and code evaluation to simulate real-world interviews and provide personalized feedback for both behavioral and technical performance.</p>
+            <div style="text-align: center;">
+            <a href="https://www.irjmets.com/upload_newfiles/irjmets70800006422/paper_file/irjmets70800006422.pdf" target="_blank">SOURCE</a>
+            </div>
+        </div>    
+        </section>
+
+      <section id="certifications">
+        <h3>-- CERTIFICATIONS --</h3>
+        <div class="certifications-container">
+          <span class="skill-bubble">Google AL Essentials</span>
+          <span class="skill-bubble">Python</span>
+          <span class="skill-bubble">Power BI</span>
+          <span class="skill-bubble">Tableau</span>
+          <span class="skill-bubble">Microsoft Dynamics 365</span>
+          <span class="skill-bubble">SAP ABAP</span>
+        </div>
+      </section>
+
+
+    <section id="contact">
+  <h3>-- CONTACT ME --</h3>
+  <p><i class="fas fa-envelope"></i> <a href="mailto:chennaishailesh@gmail.com">chennaishailesh@gmail.com</a></p>
+  <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/shailesharunkumar/">linkedin.com/in/shailesharunkumar/</a></p>
+  <p><i class="fab fa-github"></i> <a href="https://github.com/cypher0414">github.com/cypher0414</a></p>
+  <p><i class="ai ai-google-scholar"></i> <a href="https://scholar.google.com/citations?user=yzi-EBgAAAAJ&hl=en&authuser=2" target="_blank">Google Scholar</a></p>
+
+</section>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Shailesh Arunkumar, All Rights Reserved | Designed by Shailesh Arunkumar</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Highlight nav link based on scroll position
+    const sections = document.querySelectorAll("main section");
+    const navLinks = document.querySelectorAll("#navbar a");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.remove("active"));
+          const id = entry.target.getAttribute("id");
+          document.querySelector(`#navbar a[href="#${id}"]`).classList.add("active");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+  <script src="cursor-glow.js"></script>
+  
+</body>
+</html>

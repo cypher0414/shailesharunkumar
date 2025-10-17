@@ -1,0 +1,24 @@
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.skill-bubble {
+  background-color: rgba(100, 149, 255, 0.55);
+  color: var(--bg);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.skill-bubble:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 150, 255, 0.7), 0 0 20px rgba(0, 150, 255, 0.7);
+  background-color: rgba(0, 150, 255, 0.7);
+}
